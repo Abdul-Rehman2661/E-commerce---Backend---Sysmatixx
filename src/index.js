@@ -17,24 +17,17 @@ app.use("/api/payment/webhook", express.raw({ type: "application/json" }));
 app.use(express.json());
 app.use(cookieParser());
 
+
+
 const allowedOrigins = [
-  //"http://localhost:5173",                           
-  "https://e-commerce-frontend-sysmatixx.vercel.app"  // Replace with your EXACT live Vercel frontend URL
+  "http://localhost:5173",
+  "https://e-commerce-frontend-sysmatixx.vercel.app"
 ];
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // Allow requests with no origin (like mobile apps, curl, or Postman)
-      if (!origin) return callback(null, true);
-      
-      if (allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true, 
+    origin: allowedOrigins, // Direct array passing forces Express to handle the logic perfectly
+    credentials: true,
   })
 );
 

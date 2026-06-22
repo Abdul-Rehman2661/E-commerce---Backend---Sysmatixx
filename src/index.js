@@ -16,14 +16,14 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://e-commerce-frontend-sysmatixx.vercel.app",
+  "https://e-commerce-frontend-sysmatixx.vercel.app"
 ];
 
 app.use(
   cors({
-    origin: allowedOrigins, // Direct array passing forces Express to handle the logic perfectly
-    credentials: true,
-  }),
+    origin: allowedOrigins,
+    credentials: true, 
+  })
 );
 
 app.use(express.urlencoded({ extended: true }));
